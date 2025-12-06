@@ -11,14 +11,14 @@ class Product extends Model
 {
     use HasFactory;
 
-    // Aquí aseguramos que category_id esté en el arreglo
+    // Se ha actualizado el fillable para incluir 'status'
     protected $fillable = [
         'nombre',
         'descripcion',
         'precio',
         'stock',
-        'category_id', // ¡Añadido!
-        // 'status', // Si 'status' no está en la base de datos, puedes eliminarlo
+        'category_id',
+        'status', // ¡Campo 'status' agregado!
     ];
 
     /**
@@ -26,6 +26,7 @@ class Product extends Model
      */
     public function category(): BelongsTo
     {
+        // Asegúrate de que Category exista y esté importada o en el mismo namespace
         return $this->belongsTo(Category::class);
     }
 
