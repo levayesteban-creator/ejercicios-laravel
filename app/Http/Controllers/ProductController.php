@@ -32,9 +32,24 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-
+        // Pendiente de implementación real (Validación y almacenamiento)
         return response()->json(['message' => 'Método STORE pendiente de implementación.', 'data' => $request->all()]);
     }
+
+    // ==========================================================
+    // MÉTODO AGREGADO: Obtener solo productos activos
+    // ==========================================================
+    /**
+     * Muestra solo los productos con 'status' = true.
+     */
+    public function activeProducts()
+    {
+        // Usa el constructor de consultas (Query Builder) de Eloquent
+        // para filtrar los productos donde la columna 'status' sea verdadera (1).
+        return response()->json(Product::where('status', true)->get());
+    }
+    // ==========================================================
+
 
     /**
      * Muestra un producto específico (SHOW).
